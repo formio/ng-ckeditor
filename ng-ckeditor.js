@@ -83,8 +83,8 @@
                         configLoaderDef = $q.defer();
 
                     element.bind('$destroy', function () {
-                        if (instance && CKEDITOR.instances[instance.name]) {
-                            CKEDITOR.instances[instance.name].destroy();
+                        if (instance && CKEDITOR.instances[instance.name] && instance.status === 'ready') {
+                            CKEDITOR.instances[instance.name].destroy(true);
                         }
                     });
                     var setModelData = function (setPristine) {
